@@ -1,0 +1,4 @@
+localhost
+root
+
+SE_SHOPPER
