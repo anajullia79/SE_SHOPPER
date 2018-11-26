@@ -19,18 +19,20 @@
 <br>
 
 <form action="<?=@$acao?>" method="POST">
-    Nome: <input type="text" name="nome" value="<?=@$usuario['nome']?>"><br><br>
-    Sobrenome: <input type="text" name="sobrenome" value="<?=@$usuario['sobrenome']?>"><br><br>
+    Nome Completo: <input type="text" name="nome" value="<?=@$usuario['nome']?>"><br><br>
     E-mail: <input type="text" name="email" value="<?=@$usuario['email']?>"><br><br>
-      Sexo:  <select name="sexo">
+    Sexo:  <select name="sexo">
         <option value="m" <?=@assinalarCampo($usuario['sexo'], 'm')?>>Masculino</option>
         <option value="f" <?=@assinalarCampo($usuario['sexo'], 'f')?>>Feminino</option>
     </select><br><br>
 
     Senha: <input type="password" name="senha" value="<?=@$usuario['senha']?>"><br><br>
     Confirmar Senha: <input type="password" name="csenha" value="<?=@$usuario['csenha']?>"><br><br>
-    Telefone: <input type="text" name="numero" value="<?=@$usuario['numero']?>"><br><br>
+    Endereco: <input type="text" name="endereco" value="<?=@$usuario['endereco']?>"><br><br>
+    Cidade: <input type="text" name="cidade" value="<?=@$usuario['cidade']?>"><br><br>
+    Data de Nascimento: <input type="date" name="dtNasc" value="<?=@$usuario['dtNasc']?>"><br><br>
     CPF: <input type="text" name="cpf" value="<?=@$usuario['cpf']?>"><br><br>
+    Estado: <input type="text" name="estado" value="<?=@$usuario['estado']?>"><br><br>
 
 
     <button class="btn btn-primary"type="submit">Cadastrar</button><br>
