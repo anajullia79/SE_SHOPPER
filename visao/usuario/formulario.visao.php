@@ -27,7 +27,7 @@
     </select><br><br>
 
     Senha: <input type="password" name="senha" value="<?=@$usuario['senha']?>"><br><br>
-    Confirmar Senha: <input type="password" name="csenha" value="<?=@$usuario['csenha']?>"><br><br>
+    Confirmar Senha: <input type="password" name="confirmaSenha" value="<?=@$usuario['confirmaSenha']?>"><br><br>
     Endereco: <input type="text" name="endereco" value="<?=@$usuario['endereco']?>"><br><br>
     Cidade: <input type="text" name="cidade" value="<?=@$usuario['cidade']?>"><br><br>
     Data de Nascimento: <input type="date" name="dtNasc" value="<?=@$usuario['dtNasc']?>"><br><br>

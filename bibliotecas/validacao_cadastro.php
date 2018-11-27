@@ -1,15 +1,15 @@
 <?php 
-function validaCad ($nome, $CPF, $email, $senha, $confirmacaosenha,$dia,$mes,$ano,$endereco, $sexo, $data) {
+function validaCad ($nome, $cpf, $email, $senha, $confirmacaosenha,$dia,$mes,$ano,$endereco, $sexo, $data) {
 		//atribuição 
 		$errors 		= array();
 		$email			= strip_tags($_POST['email']);
 		$nome 			= strip_tags($_POST['nome']);
 		$senha 			= strip_tags($_POST['senha']);
-		$confirmaSenha	= strip_tags($_POST['confirmaSenha']);
+		$confirmaSenha	= strip_tags($_POST['confirmacaoSenha']);
 		$data 			= strip_tags($_POST["dtNasc"]);
 		$sexo 			= !empty($_POST['sexo']) ? $_POST['sexo'] : "";
 		$data 			= explode("/",$data); 
-		$CPF            = strip_tags($_POST['CPF']);
+		$cpf            = strip_tags($_POST['cpf']);
 		$endereco 		= strip_tags($_POST["endereco"]);
 		$data_total     = "";
 
@@ -20,9 +20,9 @@ function validaCad ($nome, $CPF, $email, $senha, $confirmacaosenha,$dia,$mes,$an
 			$errors[] = "Insira um nome válido";
 		}
 
-			// valida CPF
-		if (!preg_match("/^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/", $CPF) || strlen(trim($CPF)) == 0) {
-			$errors[] = "Esse CPF não é válido";
+			// valida cpf
+		if (!preg_match("/^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/", $cpf) || strlen(trim($cpf)) == 0) {
+			$errors[] = "Esse cpf não é válido";
 		}
 
 			//E-mail
@@ -84,7 +84,7 @@ function validaCad ($nome, $CPF, $email, $senha, $confirmacaosenha,$dia,$mes,$an
 			//banco de dados
 		if (empty($errors)) {
             require_once "bd/conexao.php";
-            $insert = "INSERT INTO tblUsuario(Nome,CPF,Email,Senha,confirmacaosenha,endereco,sexo,dtNasc) ";
+            $insert = "INSERT INTO tblUsuario(Nome,cpf,Email,Senha,confirmasenha,endereco,sexo,dtNasc) ";
             $insert .= "VALUES('$nome','$cpf','$email', '$senha','$confirmaSenha', '$endereco', '$sexo', '$data_total')";
             $consulta = mysqli_query($conexao,$insert);
             if (!$consulta) {

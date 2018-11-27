@@ -20,9 +20,9 @@ function adicionar() {
         $ano = $data[2];
         $dtNasc = "$ano-$mes-$dia";
 
-        $erros = validaCad($nome, $CPF, $email, $senha, $confirmaSenha,$dia,$mes,$ano, $estado, $cidade,$endereco, $sexo, $data);
+        $erros = validaCad($nome, $cpf, $email, $senha, $confirmaSenha,$dia,$mes,$ano, $estado, $cidade,$endereco, $sexo, $data);
         if (empty($erros)) {
-            adicionarUsuario($nome, $CPF, $email, $senha, $dtNasc,$cidade,$endereco, $sexo);   
+            adicionarUsuario($nome, $cpf, $email, $senha, $dtNasc,$cidade,$endereco, $sexo);   
             
             $user = pegarUsuarioLogin($email,$email);
 
