@@ -1,20 +1,21 @@
 <?php
 
 require_once "bibliotecas/mysqli.php";
-                    
-function insertproduto($marca, $categoria, $preco, $qtd, $diretorio_imagem) {
-    $insert = "INSERT INTO tblproduto(CodCategoria,nomeProduto,Preco,Estoque,
-    Imagem) VALUES ($codCategoria,'$nomeProduto','$preco','$estoque','$descricaoProduto','$diretorio_imagem')";
+
+function insertproduto($marca, $categoria, $preco, $diretorio_imagem) {
+
+    $insert = "INSERT INTO tblproduto(nomeProduto, DescricaoProduto, Preco, Imagem) VALUES ('$marca', '$categoria', '$preco', '$diretorio_imagem')";
 
     $consulta = mysqli_query($cnx = conexao(), $insert);
 
     if (!$consulta) {
         die('Erro ao cadastrar produto' . mysqli_error($cnx));
     }
-    return 'Usuario cadastrado!';
+    return 'Produto cadastrado!';
 }
+
    
-function pegarProduto ($filterID) {
+function pegarProduto($filterID) {
     $comando = "SELECT * FROM tblproduto WHERE CodProduto = $filterID";
     $query = mysqli_query($cnx = conexao(), $comando);
 
@@ -90,9 +91,9 @@ function pegarVariosProdutosPorId($produtosCarrinho) {
   Update
  *
  * */
-function updateDataproduto($codProduto, $codCategoria, $nomeProduto, $preco, $estoque,$descricaoProduto, $diretorio_imagem) {
+function updateDataproduct($CodProduto, $marca, $categoria, $preco, $diretorio_imagem) {
 
-    $update = "UPDATE tblproduto SET CodProduto = '$codProduto',CodCategoria = '$codCategoria',nomeProduto = '$nomeProduto',Preco = '$preco',Estoque = '$estoque', descProduto = '$descricaoProduto',Imagem = '$diretorio_imagem' WHERE CodProduto = $codProduto";
+    $update = "UPDATE tblproduto SET categoria = '$categoria', NomeProduto = '$marca', Preco = '$preco', Imagem = '$diretorio_imagem' WHERE CodProduto = $CodProduto";
 
     $update = mysqli_query(conexao(), $update);
 
@@ -123,9 +124,9 @@ function updateEstoque($codProduto, $qtd, $estoque_atual){
  *
  * */
 function deleteproduto($codProduto) {
-    $comando2 = "SELECT Imagem FROM tblproduto WHERE CodProduto = '$codProduto'";
-    $resultado = mysqli_query(conexao(), $comando2);
-    $produto = mysqli_fetch_assoc($resultado);
+    //$comando2 = "SELECT Imagem FROM tblproduto WHERE CodProduto = '$codProduto'";
+    //$resultado = mysqli_query(conexao(), $comando2);
+    //$produto = mysqli_fetch_assoc($resultado);
 
     $comando = "DELETE FROM tblproduto WHERE CodProduto = '$codProduto'";
     $delete = mysqli_query(conexao(), $comando);

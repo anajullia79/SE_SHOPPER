@@ -3,7 +3,7 @@
 require "./servicos/carrinhoServico.php";
 require "./modelo/produtoModelo.php";
 
-/** anon, admin, user */
+/** anon, user, admin */
 function index() {
 
 if(ehPost()){

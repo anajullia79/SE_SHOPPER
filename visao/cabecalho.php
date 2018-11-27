@@ -36,21 +36,20 @@
 				<div class="mainmenu pull-left">
 					<ul class="nav navbar-nav collapse navbar-collapse">
 						<li><a href="">Home</a></li>
-						<li><a href="./produto/index">Produtos</a></li>
+						<li><a href="./produto/listar">Produtos</a></li>
 						<?php if(isset($_SESSION["auth"]["role"]) == "admin") { ?>
 							<li><a href="./dashboard/">Dashboard</a></li>
 	   						<li><a href="./login/logout">Logout</a></li>
-			 			<?php } else { if (!isset($_SESSION["logado"])) { ?>
+			 			<?php } if (!isset($_SESSION["logado"])) { ?>
 							<li><a href="./usuario/adicionar" class="active">Cadastre-se</a>
 							<li><a href="./login/" class="active">Entrar</a>
-						<?php } else { ?>			
+							<li><a href="./carrinho/" class="active">Carrinho</a></li>			
 						<ul role="menu" class="sub-menu">
 						<li><a href="<?php echo "./usuario/" . $_SESSION['dados_cliente']['CodCliente']  ?>">Meus Dados</a></li>
 						<li><a href="./pedido/index">Meus pedidos</a></li>
-						<li><a href="./carrinho/" class="active">Carrinho</a></li>
 						<li><a href="./login/logout">Logout</a></li>
 			</ul>
-			<?php } 
+			<?php  
 			} ?>
 				</div>
 			</div>

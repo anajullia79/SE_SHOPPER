@@ -6,8 +6,8 @@
 <table class="table">
     <thead>
         <tr>
-
-            <th>MARCA</th>
+            <th>ID</th>
+            <th>NOME</th>
             <th>CATEGORIA</th>
             <th>PREÇO</th>
             <th>VISUALIZAR</th>
@@ -26,21 +26,22 @@
         </tr>
     </thead>
     <?php
-    if (!empty($produto)){
+    if (!isset($produtos)){         // die();
         foreach ($produto as $produtos): ?>
-            <tr>
 
-                <td><?=$produtos['marca']?></td>
-                <td><?=$produtos['categoria']?></td>
-                <td><?=$produtos['preco']?></td>
-                <td><a href="./produto/visualizar/<?=$produtos['codProduto']?>" class="btn btn-secondary">Visualizar</a></td>
+            <tr>
+                <td><?=$produtos['CodProduto']?></td>
+                <td><?=$produtos['NomeProduto']?></td>
+                <td><?=$produtos['DescricaoProduto']?></td>
+                <td><?=$produtos['Preco']?></td>
+                <td><a href="./produto/visualizar/<?=$produtos['CodProduto']?>" class="btn btn-secondary">Visualizar</a></td>
                 <?php
                 if (!empty($_SESSION["auth"])) {
                     if ( $_SESSION["auth"]["role"] == "admin") {
 
                         ?>
-                        <td><a href="./produto/editar/<?=$produtos['codProduto']?>" class="btn btn-info">Editar</a></td>
-                        <td><a href="./produto/deletar/<?=$produtos['codProduto']?>" class="btn btn-danger">Deletar</a></td>
+                        <td><a href="./produto/editar/<?=$produtos['CodProduto']?>" class="btn btn-info">Editar</a></td>
+                        <td><a href="./produto/deletar/<?=$produtos['CodProduto']?>" class="btn btn-danger">Deletar</a></td>
                         <?php
                     }
                 }
@@ -50,6 +51,6 @@
     </table>
     <br>
     <center>
-        <a href="./produto/adicionar" class="btn btn-primary">Adicionar novo produto</a>
+        <a href="./produto/adicionar" class="btn btn-primary">Ato</a>
     </center>
     <br>

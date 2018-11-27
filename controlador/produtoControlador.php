@@ -13,29 +13,32 @@ function index() {
 function adicionar() {
     if (ehPost()) {
         extract($_POST);
-        print_r($_POST);
-        die();
         $imagem_name      = $_FILES["imagemProduto"]["name"];
         $imagem_tmp       = $_FILES["imagemProduto"]["tmp_name"];
         $diretorio_imagem = uploadImagem($imagem_name, $imagem_tmp);
-        $msgRetorno       = insertproduto($marca, $categoria, $preco, $qtd, $diretorio_imagem);
-        redirecionar("dashboard/produto/");
+        $msgRetorno       = insertproduto($marca, $categoria, $preco, $diretorio_imagem);
+        redirecionar("produto/listar");
     } else {
         exibir("produto/formulario");
     }
 }
 
+/** anon */
+function listar() {
+    $dados["produto"] = pegarTodosProdutos();
+    exibir("produto/listar", $dados);
+}
 
 /** anon */
 function visualizar($id) {
-    $dados['produto'] = pegarprodutoPorId($id);
+    $dados['produto'] = pegarProduto($id);
     exibir("produto/visualizar", $dados);
 }
 
 /** admin */
 function deletar($id) {
-    alert(deletarproduto($id));
-    redirecionar("produto/index");
+    alert(deleteproduto($id));
+    redirecionar("produto/listar");
 }
 
 
@@ -46,11 +49,11 @@ function editar($id) {
         $imagem_name   = $_FILES["imagemProduto"]["name"];
         $imagem_tmp    = $_FILES["imagemProduto"]["tmp_name"];
         $diretorio_img = uploadImagem($imagem_name, $imagem_tmp);
-        updateDataProduct($id, $codCategoria, $nomeProduto, $preco, $estoque, $descricaoProduto, $diretorio_imagem);
+        updateDataProduct($id, $codCategoria, $nomeProduto, $preco, $imagemProduto);
         alert("Produto editado!");
-        redirecionar("produto/index");
+        redirecionar("produto/listar");
     } else {
-        $dados['produto'] = pegarprodutoPorId($id);
+        $dados['produto'] = pegarProduto($id);
         $dados['acao']    = "./produto/editar/$id";
         exibir("produto/formulario", $dados);
     }
