@@ -36,11 +36,17 @@ function pegarUsuarioPorId($id) {
     $tblusuario = mysqli_fetch_array($resultado);
     return $tblusuario;
 }
+// $nome, $cpf, $email, $senha, $cidade,$endereco, $sexo);
+function adicionarUsuario($nome, $CPF, $email, $senha, $cidade,$endereco, $sexo){
+    if ($email<>"adm@adm.com") {
+        $tipoUsuario = "user";
+    }else{
+        $tipoUsuario = "admin";
+    }
 
-function adicionarUsuario($nome, $CPF, $email, $senha, $dtNasc,$cidade,$endereco, $sexo){
-    $tipoUsuario = "user";
-
-    $insert = "INSERT INTO tblUsuario(Nome,Email,Senha,CPF,cidade,endereco,dtNasc,tipoUsuario,sexo) VALUES('$nome', '$email', '$senha', '$CPF','$cidade', '$endereco', '$dtNasc','$tipoUsuario','$sexo')";
+    
+                                        
+    $insert = "INSERT INTO tblUsuario(Nome, Email, Senha, CPF, endereco, tipoUsuario, sexo) VALUES('$nome', '$email', '$senha', '$CPF', '$endereco', '$tipoUsuario', '$sexo')";
 
     $resultado = mysqli_query($cnx = conexao(),$insert);
        if(!$resultado) { die('Erro ao cadastrar usuário' . mysqli_error($cnx)); }

@@ -14,15 +14,15 @@ function index(){
 function adicionar() {
     if (ehPost()) {
         extract($_POST);
-        $data = explode("/",$dtNasc);
-        $dia = $data[0]; 
-        $mes = $data[1];
-        $ano = $data[2];
-        $dtNasc = "$ano-$mes-$dia";
+        // $data = explode("/",$dtNasc);
+        // $dia = $data[0]; 
+        // $mes = $data[1];
+        // $ano = $data[2];
+        // $dtNasc = "$ano-$mes-$dia";
 
-        $erros = validaCad($nome, $cpf, $email, $senha, $confirmaSenha,$dia,$mes,$ano, $estado, $cidade,$endereco, $sexo, $data);
+        $erros = validaCad($nome, $cpf, $email, $senha, $estado, $cidade,$endereco, $sexo);
         if (empty($erros)) {
-            adicionarUsuario($nome, $cpf, $email, $senha, $dtNasc,$cidade,$endereco, $sexo);   
+            adicionarUsuario($nome, $cpf, $email, $senha, $cidade,$endereco, $sexo); 
             
             $user = pegarUsuarioLogin($email,$email);
 

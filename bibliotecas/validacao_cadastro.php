@@ -1,17 +1,17 @@
 <?php 
-function validaCad ($nome, $cpf, $email, $senha, $confirmacaosenha,$dia,$mes,$ano,$endereco, $sexo, $data) {
+function validaCad ($nome, $cpf, $email, $senha, $confirmacaosenha,$endereco, $sexo) {
 		//atribuição 
 		$errors 		= array();
 		$email			= strip_tags($_POST['email']);
 		$nome 			= strip_tags($_POST['nome']);
 		$senha 			= strip_tags($_POST['senha']);
-		$confirmaSenha	= strip_tags($_POST['confirmacaoSenha']);
-		$data 			= strip_tags($_POST["dtNasc"]);
+		// $confirmaSenha	= strip_tags($_POST['confirmacaoSenha']);
+		// $data 			= strip_tags($_POST["dtNasc"]);
 		$sexo 			= !empty($_POST['sexo']) ? $_POST['sexo'] : "";
-		$data 			= explode("/",$data); 
+		// $data 			= explode("/",$data); 
 		$cpf            = strip_tags($_POST['cpf']);
 		$endereco 		= strip_tags($_POST["endereco"]);
-		$data_total     = "";
+		// $data_total     = "";
 
 			// valida nome
 		if (strlen(trim($nome)) == 0) {
@@ -41,36 +41,36 @@ function validaCad ($nome, $cpf, $email, $senha, $confirmacaosenha,$dia,$mes,$an
 		} 
 
 		    //confirmar senha
-		if($confirmaSenha == ""){
-			$errors[] = "Insira a confirmação da senha"; 
-		} else if(!($senha == $confirmaSenha)){
-			$errors[] = "Confirme a senha";
-		}
+		// if($confirmaSenha == ""){
+		// 	$errors[] = "Insira a confirmação da senha"; 
+		// } else if(!($senha == $confirmaSenha)){
+		// 	$errors[] = "Confirme a senha";
+		// }
 
 		 //valida data de nasc
-		if (count($data) == 3) {
-			$dia = $data[0]; 
-			$mes = $data[1];
-			$ano = $data[2];
+		// if (count($data) == 3) {
+		// 	$dia = $data[0]; 
+		// 	$mes = $data[1];
+		// 	$ano = $data[2];
 
-			if (strlen(trim($ano)) == 0) {
-				$errors[] = "Insira o ano";
-			} elseif ($ano >=2017 || $ano < 1917){
-				$errors[] = "Ano inválido.";
-			}
+		// 	if (strlen(trim($ano)) == 0) {
+		// 		$errors[] = "Insira o ano";
+		// 	} elseif ($ano >=2017 || $ano < 1917){
+		// 		$errors[] = "Ano inválido.";
+		// 	}
 			
-			if (strlen(trim($mes)) == 0) {
-				$errors[] = "Insira o mês.";
-			} elseif (($mes >=12 || $mes < 1)){
-				$errors[] = "Mês inválido.";
-			} 
+		// 	if (strlen(trim($mes)) == 0) {
+		// 		$errors[] = "Insira o mês.";
+		// 	} elseif (($mes >=12 || $mes < 1)){
+		// 		$errors[] = "Mês inválido.";
+		// 	} 
 
-			if (strlen(trim($dia)) == 0) {
-				$errors[] = "Insira o dia";
-			} elseif (($dia >=31 || $dia <=1)||($dia >= 28 && $mes == "fevereiro")){
-				$errors[] = "Dia invalido.";
-			} 
-		}
+		// 	if (strlen(trim($dia)) == 0) {
+		// 		$errors[] = "Insira o dia";
+		// 	} elseif (($dia >=31 || $dia <=1)||($dia >= 28 && $mes == "fevereiro")){
+		// 		$errors[] = "Dia invalido.";
+		// 	} 
+		// }
 			//endereco
 		if (strlen(trim($endereco)) == 0) {
 			$errors[] = "Insira um endereco";

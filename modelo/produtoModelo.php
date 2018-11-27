@@ -1,9 +1,10 @@
 <?php
 
 require_once "bibliotecas/mysqli.php";
-
-function insertproduto($codCategoria, $nomeProduto, $preco,$estoque, $descricaoProduto, $diretorio_imagem) {
-    $insert = "INSERT INTO tblproduto(CodCategoria,nomeProduto,Preco,Estoque,DescProduto,Imagem) VALUES ($codCategoria,'$nomeProduto','$preco','$estoque','$descricaoProduto','$diretorio_imagem')";
+                    
+function insertproduto($marca, $categoria, $preco, $qtd, $diretorio_imagem) {
+    $insert = "INSERT INTO tblproduto(CodCategoria,nomeProduto,Preco,Estoque,
+    Imagem) VALUES ($codCategoria,'$nomeProduto','$preco','$estoque','$descricaoProduto','$diretorio_imagem')";
 
     $consulta = mysqli_query($cnx = conexao(), $insert);
 

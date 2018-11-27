@@ -13,15 +13,18 @@ function index() {
 function adicionar() {
     if (ehPost()) {
         extract($_POST);
+        print_r($_POST);
+        die();
         $imagem_name      = $_FILES["imagemProduto"]["name"];
         $imagem_tmp       = $_FILES["imagemProduto"]["tmp_name"];
         $diretorio_imagem = uploadImagem($imagem_name, $imagem_tmp);
-        $msgRetorno       = insertProduct($codCategoria, $nomeProduto, $preco,$estoque, $descricaoProduto, $diretorio_imagem);
+        $msgRetorno       = insertproduto($marca, $categoria, $preco, $qtd, $diretorio_imagem);
         redirecionar("dashboard/produto/");
     } else {
-        exibir("produto/formulario", $dados);
+        exibir("produto/formulario");
     }
 }
+
 
 /** anon */
 function visualizar($id) {
