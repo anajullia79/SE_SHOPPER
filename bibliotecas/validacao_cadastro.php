@@ -2,14 +2,14 @@
 function validaCad ($nome, $CPF, $email, $senha, $confirmacaosenha,$dia,$mes,$ano,$endereco, $sexo, $data) {
 		//atribuição 
 		$errors 		= array();
-		$email			= strip_tags($_POST['email_cadastro']);
-		$nome 			= strip_tags($_POST['nome_cadastro']);
-		$senha 			= strip_tags($_POST['senha_cadastro']);
-		$confirmaSenha	= strip_tags($_POST['confirmar_senha']);
-		$data 			= strip_tags($_POST["data_nascimento"]);
+		$email			= strip_tags($_POST['email']);
+		$nome 			= strip_tags($_POST['nome']);
+		$senha 			= strip_tags($_POST['senha']);
+		$confirmaSenha	= strip_tags($_POST['confirmaSenha']);
+		$data 			= strip_tags($_POST["dtNasc"]);
 		$sexo 			= !empty($_POST['sexo']) ? $_POST['sexo'] : "";
 		$data 			= explode("/",$data); 
-		$CPF            = strip_tags($_POST['CPF_cadastro']);
+		$CPF            = strip_tags($_POST['CPF']);
 		$endereco 		= strip_tags($_POST["endereco"]);
 		$data_total     = "";
 
@@ -26,7 +26,7 @@ function validaCad ($nome, $CPF, $email, $senha, $confirmacaosenha,$dia,$mes,$an
 		}
 
 			//E-mail
-		$emailValido 	= filter_input(INPUT_POST, 'email_cadastro', FILTER_VALIDATE_EMAIL);
+		$emailValido 	= filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
 		if (!$emailValido || strlen(trim($email)) == 0) {
 			$errors[] = "E-mail não valido.";
 		}
